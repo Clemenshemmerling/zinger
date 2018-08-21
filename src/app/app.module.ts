@@ -14,6 +14,7 @@ import { LoginPageModule } from '../pages/login/login.module';
 import { ChatPageModule } from '../pages/chat/chat.module';
 import { ProfilePageModule } from '../pages/profile/profile.module';
 import { ProfilePage } from '../pages/profile/profile';
+import { AboutPageModule } from '../pages/about/about.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ProfilePage } from '../pages/profile/profile';
     IonicModule.forRoot(MyApp),
     LoginPageModule,
     ChatPageModule,
-    ProfilePageModule
+    ProfilePageModule,
+    AboutPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
