@@ -1,0 +1,7 @@
+{
+  "name": "zinger",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
