@@ -10,4 +10,7 @@
 <ion-content padding>
   <button ion-button (click)="goToChat()">Ir a chat</button>
   <button ion-button (click)="goToLogin()">Ir a Login</button>
+  <ion-item *ngFor="let user of users; let i = index">
+    <p>{{i}} {{ user.nick}}-{{ user.email }}</p>
+  </ion-item>
 </ion-content>
