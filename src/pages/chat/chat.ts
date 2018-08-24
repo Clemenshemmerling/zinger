@@ -14,12 +14,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'chat.html',
 })
 export class ChatPage {
-
+  user: any = {};
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.user = navParams.get('user');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChatPage');
+    console.log(this.user);
   }
 
   goBack() {

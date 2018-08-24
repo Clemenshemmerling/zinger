@@ -8,9 +8,17 @@
 </ion-header>
 
 <ion-content padding>
-  <button ion-button (click)="goToChat()">Ir a chat</button>
-  <button ion-button (click)="goToLogin()">Ir a Login</button>
-  <ion-item *ngFor="let user of users; let i = index">
-    <p>{{i}} {{ user.nick}}-{{ user.email }}</p>
-  </ion-item>
+  <span>Amigos</span>
+  <ng-container *ngFor="let user of users; let i = index">
+    <div *ngIf="user.friend">
+      <a (click)="goToChat(user)">{{i}} {{ user.nick}}-{{ user.email }}</a>
+    </div>
+  </ng-container>
+
+  <span>No agregados</span>
+  <ng-container *ngFor="let user of users; let i = index">
+    <div *ngIf="!user.friend">
+      <p>{{i}} {{ user.nick}}-{{ user.email }}</p>
+    </div>
+  </ng-container>
 </ion-content>

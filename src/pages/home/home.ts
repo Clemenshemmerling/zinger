@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ChatPage } from '../chat/chat';
 import { LoginPage } from '../login/login';
-import { User } from '../../app/interfaces/user';
+import { User } from '../../../app/interfaces/user';
 
 @Component({
   selector: 'page-home',
@@ -60,8 +60,8 @@ export class HomePage {
   
   }
   
-  goToChat() {
-    this.navCtrl.push(ChatPage);
+  goToChat(user) {
+    this.navCtrl.push(ChatPage, {user: user});
   }
 
   goToLogin() {
