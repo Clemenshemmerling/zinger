@@ -15,6 +15,7 @@ import { ChatPageModule } from '../pages/chat/chat.module';
 import { ProfilePageModule } from '../pages/profile/profile.module';
 import { ProfilePage } from '../pages/profile/profile';
 import { AboutPageModule } from '../pages/about/about.module';
+import { UserService } from '../services/user';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AboutPageModule } from '../pages/about/about.module';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserService
   ]
 })
 export class AppModule {}
