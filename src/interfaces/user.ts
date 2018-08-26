@@ -11,6 +11,7 @@ export  interface User {
     subnick?: string;
     age?: number;
     email: string;
+    status: Status;
     friend: boolean;
     uid: any;
 }

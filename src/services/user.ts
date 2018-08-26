@@ -10,10 +10,11 @@ export class UserService {
 
     private users: User[] = [
         {
-            nick: 'CLemens',
+            nick: 'Clemens',
             subnick: 'Clele',
             age: 32,
             email: 'cle@gmail.com',
+            status: Status.Offline,
             friend: true,
             uid: 1
         },
@@ -23,6 +24,7 @@ export class UserService {
             subnick: 'Lechon',
             age: 30,
             email: 'lechon@gmail.com',
+            status: Status.Online,
             friend: true,
             uid: 2
         },
@@ -32,6 +34,7 @@ export class UserService {
             subnick: 'Pollo',
             age: 31,
             email: 'pollo@gmail.com',
+            status: Status.Away,
             friend: false,
             uid: 3
         },
@@ -41,6 +44,7 @@ export class UserService {
             subnick: 'Coche',
             age: 31,
             email: 'Coche@gmail.com',
+            status: Status.Busy,
             friend: true,
             uid: 4
         },
@@ -50,6 +54,7 @@ export class UserService {
             subnick: 'isa',
             age: 31,
             email: 'isa@gmail.com',
+            status: Status.Online,
             friend: false,
             uid: 5
         } 

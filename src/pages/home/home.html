@@ -7,12 +7,15 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <input type="text" placeholder="Buscar Amigo" [(ngModel)]="query">
-  <br/>
-  <span>Amigos</span>
-  <ng-container *ngFor="let user of users | search: query; let i = index">
-    <div>
-      <a (click)="goToChat(user)">{{i}} {{ user.nick}}-{{ user.email }}</a>
-    </div>
-  </ng-container>
+  <div padding>
+    <input type="text" placeholder="Buscar Amigo" [(ngModel)]="query">
+  </div>
+  <span>Conectados</span>
+  <ion-list>
+    <ng-container *ngFor="let user of users | search: query; let i = index">
+      <ion-item *ngIf="user.status !== 'Offline'" (click)="goToChat(user)">
+        {{ user.nick}}-{{ user.status }}
+      </ion-item>  
+    </ng-container>
+  </ion-list>
 </ion-content>
