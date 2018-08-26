@@ -1,14 +1,18 @@
 import { Injectable } from "@angular/core";
-import {AngularFireDatabase} from "angularfire2/database";
 import {AngularFireAuth} from "angularfire2/auth";
 
 @Injectable()
 
 export class AuthService {
-    registerWithEmail(email, password) {
-        return this.firebaseAuth.auth.createUserWithEmailAndPassword(email, password);
+    constructor(private afAuth: AngularFireAuth) {
+
     }
-      loginWithEmail(email, password) {
-        return this.firebaseAuth.auth.signInWithEmailAndPassword(email, password);
+
+    registerEmail(email, password) {
+        return this.afAuth.auth.createUserWithEmailAndPassword(email, password);
+    }
+
+    LoginEmail(email, password) {
+        return this.afAuth.auth.signInWithEmailAndPassword(email, password);
     }
 }
