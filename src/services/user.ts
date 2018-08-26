@@ -24,7 +24,7 @@ export class UserService {
             subnick: 'Lechon',
             age: 30,
             email: 'lechon@gmail.com',
-            status: Status.Online,
+            status: Status.AppearOffline,
             friend: true,
             uid: 2
         },

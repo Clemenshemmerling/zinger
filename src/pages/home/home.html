@@ -4,18 +4,40 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Home</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal">
+        <img src="assets/img/logo_live_add.png" class="icon-in-button">
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
-  <div padding>
-    <input type="text" placeholder="Buscar Amigo" [(ngModel)]="query">
+<ion-content padding class="backgroundZinger">
+  <ion-grid id="homeMeCtn">
+    <ion-row>
+      <ion-col col-3>
+        <div class="avatarOnline">
+            <img src="../../assets/img/generic_avatar.png" class="avatarImage img-fluid">
+        </div>
+      </ion-col>
+      <ion-col col-9>
+        Nick <br>
+        <small>Subnick</small> <br>
+        <small><b>clemens@gmail.com</b></small>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="searchBoxCtn">
+    <input type="text" id="searchField" placeholder="Buscar Amigo" [(ngModel)]="query">
   </div>
-  <span>Conectados</span>
-  <ion-list>
-    <ng-container *ngFor="let user of users | search: query; let i = index">
-      <ion-item *ngIf="user.status !== 'Offline'" (click)="goToChat(user)">
-        {{ user.nick}}-{{ user.status }}
-      </ion-item>  
-    </ng-container>
-  </ion-list>
+
+  <div>
+    <div>
+      <b>Amigos</b>
+    </div> 
+    <div class="contact-list-item" [ngClass]="{ 'contac-offline': user.status == 'Offline' || user.status == 'AppearOffline' }" [ngStyle]="{ 'color': user.status == 'Offline' || user.status == 'AppearOffline' ? 'red' : 'blue'}" *ngFor="let user of users | search: query">
+      <img src="assets/img/{{ getIconByStatus(user.status) }}" class="status">
+      <b (click)="goToChat(user)">{{ user.nick }}</b>
+      <small *ngIf="user.status">{{ user.status }}</small>
+    </div>
+  </div>
 </ion-content>
