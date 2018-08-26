@@ -16,12 +16,14 @@ import { ProfilePageModule } from '../pages/profile/profile.module';
 import { ProfilePage } from '../pages/profile/profile';
 import { AboutPageModule } from '../pages/about/about.module';
 import { UserService } from '../services/user';
+import { SearchPipe } from '../pipes/search';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

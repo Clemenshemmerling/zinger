@@ -11,6 +11,7 @@ import { Status, User } from '../../interfaces/user';
 })
 export class HomePage {
   users: User[];
+  query: string = '';
   constructor(public navCtrl: NavController, public userService: UserService) {
     this.users = this.userService.get();
     console.log(this.users);
