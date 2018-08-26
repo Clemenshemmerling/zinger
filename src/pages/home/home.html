@@ -34,10 +34,12 @@
     <div>
       <b>Amigos</b>
     </div> 
-    <div class="contact-list-item" [ngClass]="{ 'contac-offline': user.status == 'Offline' || user.status == 'AppearOffline' }" [ngStyle]="{ 'color': user.status == 'Offline' || user.status == 'AppearOffline' ? 'red' : 'blue'}" *ngFor="let user of users | search: query">
-      <img src="assets/img/{{ getIconByStatus(user.status) }}" class="status">
-      <b (click)="goToChat(user)">{{ user.nick }}</b>
-      <small *ngIf="user.status">{{ user.status }}</small>
+    <div *ngFor="let user of users | search: query">
+      <div class="contact-list-item" [ngClass]="{ 'contac-offline': user.status == 'Offline' || user.status == 'AppearOffline' }" [ngStyle]="{ 'color': user.status == 'Offline' || user.status == 'AppearOffline' ? 'red' : 'blue'}" (click)="goToChat(user)">
+        <img src="assets/img/{{ getIconByStatus(user.status) }}" class="status">
+        <b>{{ user.nick }}</b>
+        <small *ngIf="user.status">{{ user.status }}</small>
+      </div>
     </div>
   </div>
 </ion-content>
