@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ChatPage } from '../chat/chat';
-import { LoginPage } from '../login/login';
 import { UserService } from '../../services/user';
 import { Status, User } from '../../interfaces/user';
+import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'page-home',
@@ -11,19 +11,36 @@ import { Status, User } from '../../interfaces/user';
 })
 export class HomePage {
   users: User[];
-  query: string = '';
+  query: string;
   status: Status;
-  constructor(public navCtrl: NavController, public userService: UserService) {
-    this.users = this.userService.get();
-    console.log(this.users);
+  user: User;
+
+  constructor(public navCtrl: NavController, public userService: UserService, private authService: AuthService ) {
+    const userWatch = this.userService.getUsers();
+    userWatch.valueChanges().subscribe((data: User[]) => {
+      this.users = data;
+      console.log(data);
+    }, (error) => {
+      console.log(error);
+    });
+    this.authService.getStatus().subscribe((session) => {
+      if (!session) {
+        return;
+      }
+      if (!session.uid) {
+        return;
+      }
+      this.userService.getUser(session.uid).valueChanges().subscribe((user: User) => {
+        this.user = user;
+      }, (error) => {
+        console.log(error);
+      })
+    }, (error) => {console.log(error);})
   }
   
   goToChat(user) {
     this.navCtrl.push(ChatPage, {user: user});
-  }
-
-  goToLogin() {
-    this.navCtrl.push(LoginPage);
+    
   }
 
   getIconByStatus(status) {

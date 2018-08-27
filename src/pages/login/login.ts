@@ -37,7 +37,7 @@ export class LoginPage {
         duration: 3000
       });
       toast.present();
-      console.log(data);
+      this.navCtrl.setRoot(HomePage);
     }).catch((error) => {
       const toast = this.toastCtrl.create({
         message: 'Ocurrio un error',
@@ -58,12 +58,28 @@ export class LoginPage {
       return;
     }
     this.authService.registerEmail(this.email, this.password).then((data) => {
-      const toast = this.toastCtrl.create({
-        message: 'Registardo correctamente',
-        duration: 3000
+      const user: User = {
+        nick : this.nick,
+        email: this.email,
+        status: this.status,
+        friend: true,
+        uid: data.user.uid
+      }
+      this.userService.createUser(user).then((res) => {
+        const toast = this.toastCtrl.create({
+          message: 'Registardo correctamente',
+          duration: 3000
+        });
+        toast.present();
+        this.navCtrl.setRoot(HomePage);
+      }).catch((error) => {
+        const toast = this.toastCtrl.create({
+          message: 'Ocurrio un error',
+          duration: 3000
+        });
+        toast.present();
+        console.log(error);
       });
-      toast.present();
-      console.log(data);
     }).catch((error) => {
       const toast = this.toastCtrl.create({
         message: 'Ocurrio un error',
