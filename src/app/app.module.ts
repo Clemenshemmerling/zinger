@@ -18,6 +18,20 @@ import { AboutPageModule } from '../pages/about/about.module';
 import { UserService } from '../services/user';
 import { SearchPipe } from '../pipes/search';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AuthService } from '../services/auth';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyAyiNTa3uSS4q5QDDaof6XvZ2vOWEGJCuo",
+  authDomain: "zinger-cc5ef.firebaseapp.com",
+  databaseURL: "https://zinger-cc5ef.firebaseio.com",
+  projectId: "zinger-cc5ef",
+  storageBucket: "zinger-cc5ef.appspot.com",
+  messagingSenderId: "841297612535"
+};
+
 @NgModule({
   declarations: [
     MyApp,
@@ -31,7 +45,10 @@ import { SearchPipe } from '../pipes/search';
     LoginPageModule,
     ChatPageModule,
     ProfilePageModule,
-    AboutPageModule
+    AboutPageModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -43,7 +60,8 @@ import { SearchPipe } from '../pipes/search';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserService
+    UserService,
+    AuthService
   ]
 })
 export class AppModule {}
