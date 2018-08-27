@@ -12,11 +12,12 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding class="backgroundZinger">
+  
   <ion-grid id="homeMeCtn">
     <ion-row>
       <ion-col col-3>
         <div class="avatarOnline">
-            <img src="../../assets/img/generic_avatar.png" class="avatarImage img-fluid">
+            <img src="assets/img/generic_avatar.png" class="avatarImage img-fluid">
         </div>
       </ion-col>
       <ion-col col-9>
@@ -26,6 +27,7 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+
   <div class="searchBoxCtn">
     <input type="text" id="searchField" placeholder="Buscar Amigo" [(ngModel)]="query">
   </div>
@@ -42,4 +44,5 @@
       </div>
     </div>
   </div>
+
 </ion-content>
