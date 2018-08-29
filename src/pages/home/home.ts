@@ -47,19 +47,19 @@ export class HomePage {
     let icon = '';
 
     switch(status) {
-      case 'Online':
+      case Status.Online:
         icon = 'logo_live_online.png'
           break;
-      case 'Offline':
+      case Status.Offline:
         icon = 'logo_live_offline.png'
           break;
-      case 'Busy':
+      case Status.Busy:
         icon = 'logo_live_busy.png'
           break;
-      case 'Away':
+      case Status.Away:
         icon = 'logo_live_away.png'
           break;
-      case 'AppearOffline':
+      case Status.AppearOffline:
         icon = 'logo_live_offline.png'
           break;            
     }
